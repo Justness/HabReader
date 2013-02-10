@@ -1,12 +1,15 @@
 <resources>
 
     <!-- Icons -->
+    <attr name="icEvents" format="integer" />
+    <attr name="icFavorites" format="integer" />
+    <attr name="icGoToWeb" format="reference" />
     <attr name="icSearchIcon" format="reference" />
-    
+    <attr name="icShare" format="reference" />
+
     <!-- Styles -->
     <attr name="Users.Divider" format="reference" />
-    
+
     <!-- Text colors -->
     <attr name="textColorWB" format="reference" />
-
-</resources>
+</resources>

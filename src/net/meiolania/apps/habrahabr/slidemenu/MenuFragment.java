@@ -33,9 +33,11 @@ import net.meiolania.apps.habrahabr.fragments.qa.QaMainFragment;
 import net.meiolania.apps.habrahabr.fragments.users.UsersFragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,22 +62,22 @@ public class MenuFragment extends SherlockListFragment {
 	menu = new ArrayList<MenuData>();
 
 	if (!User.getInstance().isLogged())
-	    menu.add(new MenuData(R.string.auth, R.drawable.ic_users, ItemType.AUTH, false));
+	    menu.add(new MenuData(R.string.auth, R.drawable.ic_users_dark, ItemType.AUTH, false));
 	else {
 	    menu.add(new MenuData(R.string.account, 0, null, true));
 	    // TODO: set user avatar
-	    menu.add(new MenuData(User.getInstance().getLogin(), R.drawable.ic_users, ItemType.PROFILE, false));
-	    menu.add(new MenuData(R.string.feed, R.drawable.ic_feed, ItemType.FEED, false));
-	    menu.add(new MenuData(R.string.favorites, R.drawable.ic_favorites, ItemType.FAVORITES, false));
+	    menu.add(new MenuData(User.getInstance().getLogin(), R.drawable.ic_users_dark, ItemType.PROFILE, false));
+	    menu.add(new MenuData(R.string.feed, R.drawable.ic_feed_dark, ItemType.FEED, false));
+	    menu.add(new MenuData(R.string.favorites, R.drawable.ic_favorites_dark, ItemType.FAVORITES, false));
 	}
 
 	menu.add(new MenuData(R.string.sections, 0, null, true));
-	menu.add(new MenuData(R.string.posts, R.drawable.ic_posts, ItemType.POSTS, false));
-	menu.add(new MenuData(R.string.hubs, R.drawable.ic_hubs, ItemType.HUBS, false));
-	menu.add(new MenuData(R.string.qa, R.drawable.ic_qa, ItemType.QA, false));
-	menu.add(new MenuData(R.string.events, R.drawable.ic_events, ItemType.EVENTS, false));
-	menu.add(new MenuData(R.string.companies, R.drawable.ic_companies, ItemType.COMPANIES, false));
-	menu.add(new MenuData(R.string.people, R.drawable.ic_users, ItemType.USERS, false));
+	menu.add(new MenuData(R.string.posts, R.drawable.ic_posts_dark, ItemType.POSTS, false));
+	menu.add(new MenuData(R.string.hubs, R.drawable.ic_hubs_dark, ItemType.HUBS, false));
+	menu.add(new MenuData(R.string.qa, R.drawable.ic_qa_dark, ItemType.QA, false));
+	menu.add(new MenuData(R.string.events, R.drawable.ic_events_dark, ItemType.EVENTS, false));
+	menu.add(new MenuData(R.string.companies, R.drawable.ic_companies_dark, ItemType.COMPANIES, false));
+	menu.add(new MenuData(R.string.people, R.drawable.ic_users_dark, ItemType.USERS, false));
 
 	menuAdapter = new MenuAdapter(getSherlockActivity(), menu);
 	setListAdapter(menuAdapter);
@@ -192,6 +194,18 @@ public class MenuFragment extends SherlockListFragment {
 		View view = layoutInflater.inflate(R.layout.slide_menu_row, null);
 
 		TextView title = (TextView) view.findViewById(R.id.slide_menu_title);
+		
+		//TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SlideMenu);
+		//Drawable drawable = a.getDrawable(R.styleable.icFavorites);
+		
+		TypedValue typedValue = new TypedValue(); 
+		context.getTheme().resolveAttribute(data.icon, typedValue, true);
+		
+		//int[] textSizeAttr = new int[] { data.icon };
+		//int indexOfAttrTextSize = 0;
+		//TypedArray a = context.obtainStyledAttributes(typedValue.data, textSizeAttr);
+		//int image = a.getInt(indexOfAttrTextSize, -1);
+		//a.recycle();
 
 		Drawable img = context.getResources().getDrawable(data.icon);
 		title.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);

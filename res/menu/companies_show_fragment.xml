@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/go_to_website"
-        android:icon="@drawable/ic_go_to_website"
+        android:icon="?attr/icGoToWeb"
         android:showAsAction="always"
         android:title="@string/go_to_company_website"/>
 

@@ -8,7 +8,7 @@
         android:title="Дополнительная информация"/>
     <item
         android:id="@+id/share"
-        android:icon="@drawable/ic_share"
+        android:icon="?attr/icShare"
         android:showAsAction="always"
         android:title="@string/share"/>
 
