@@ -11,7 +11,7 @@
         android:padding="15dp" >
         
         <TextView
-            style="@style/HabReader.Theme.Light.Users.Divider"
+            style="@style/Users.Divider"
             android:id="@+id/company_industries_divider"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content" />
         
         <TextView
-            style="@style/HabReader.Theme.Light.Users.Divider"
+            style="@style/Users.Divider"
             android:id="@+id/company_location_divider"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content" />
         
         <TextView
-            style="@style/HabReader.Theme.Light.Users.Divider"
+            style="@style/Users.Divider"
             android:id="@+id/company_quantity_divider"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content" />
         
         <TextView
-            style="@style/HabReader.Theme.Light.Users.Divider"
+            style="@style/Users.Divider"
             android:id="@+id/company_summary_divider"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content" />
         
         <TextView
-            style="@style/HabReader.Theme.Light.Users.Divider"
+            style="@style/Users.Divider"
             android:id="@+id/company_management_divider"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
             android:layout_height="wrap_content" />
         
         <TextView
-            style="@style/HabReader.Theme.Light.Users.Divider"
+            style="@style/Users.Divider"
             android:id="@+id/company_development_stages_divider"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

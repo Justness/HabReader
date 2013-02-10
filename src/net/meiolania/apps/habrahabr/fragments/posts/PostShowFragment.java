@@ -26,19 +26,21 @@ import net.meiolania.apps.habrahabr.utils.IntentUtils;
 import net.meiolania.apps.habrahabr.utils.UIUtils;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.webkit.WebSettings.ZoomDensity;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
-
+import android.widget.TextView;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
@@ -53,6 +55,8 @@ public class PostShowFragment extends SherlockFragment implements LoaderCallback
     private WebView content;
     private FrameLayout webviewContainer;
     private static final String STYLESHEET = "<link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/style.css\" />";
+    TextView author, rating, views;
+    View popup;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -65,6 +69,8 @@ public class PostShowFragment extends SherlockFragment implements LoaderCallback
 
 	content = (WebView) getSherlockActivity().findViewById(R.id.post_content);
 	webviewContainer = (FrameLayout) getSherlockActivity().findViewById(R.id.webview_container);
+	author = (TextView) getSherlockActivity().findViewById(R.id.post_author);
+	rating = (TextView) getSherlockActivity().findViewById(R.id.post_rating);
 
 	if (ConnectionUtils.isConnected(getSherlockActivity()))
 	    getSherlockActivity().getSupportLoaderManager().initLoader(LOADER_POST, null, this);
@@ -72,7 +78,9 @@ public class PostShowFragment extends SherlockFragment implements LoaderCallback
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-	return inflater.inflate(R.layout.posts_show_activity, container, false);
+	View v = inflater.inflate(R.layout.posts_show_activity, container, false);
+	popup = (View) v.findViewById(R.id.view1);
+	return v;
     }
 
     @Override
@@ -85,9 +93,21 @@ public class PostShowFragment extends SherlockFragment implements LoaderCallback
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 	switch (item.getItemId()) {
-	    case R.id.share:
-		IntentUtils.createShareIntent(getSherlockActivity(), title, url);
-		break;
+	case R.id.share:
+	    IntentUtils.createShareIntent(getSherlockActivity(), title, url);
+	    break;
+	case R.id.addit_info:
+	    SherlockFragmentActivity d = getSherlockActivity();
+	    Animation animShow = AnimationUtils.loadAnimation(d, R.anim.popup_show);
+	    Animation animHide = AnimationUtils.loadAnimation(d, R.anim.popup_hide);
+	    if (popup.getVisibility() != View.VISIBLE) {
+		popup.setVisibility(View.VISIBLE);
+		popup.startAnimation(animShow);
+	    } else {
+		popup.startAnimation(animHide);
+		popup.setVisibility(View.GONE);
+	    }
+	    break;
 	}
 	return super.onOptionsItemSelected(item);
     }
@@ -116,9 +136,13 @@ public class PostShowFragment extends SherlockFragment implements LoaderCallback
 
 	    content.getSettings().setJavaScriptEnabled(true);
 	    content.getSettings().setDefaultZoom(ZoomDensity.FAR);
-	    content.setInitialScale(prefs.getViewScale(getSherlockActivity()));
+	    content.setInitialScale(prefs.getViewScale());
 
-	    content.loadDataWithBaseURL("", STYLESHEET + data.getContent(), "text/html", "UTF-8", null);
+	    content.loadDataWithBaseURL("", data.getDataHead() + STYLESHEET + data.getContent() + data.getInfoPanel(),
+		    "text/html", "UTF-8", null);
+
+	    author.setText(data.getAuthor());
+	    rating.setText(data.getScore());
 	}
 
 	title = data.getTitle();
@@ -165,5 +189,4 @@ public class PostShowFragment extends SherlockFragment implements LoaderCallback
 	webviewContainer.removeAllViews();
 	content.destroy();
     }
-
 }

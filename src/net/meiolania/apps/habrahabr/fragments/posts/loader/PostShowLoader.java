@@ -44,19 +44,24 @@ public class PostShowLoader extends AsyncTaskLoader<PostsFullData> {
 	try {
 	    Document document = Jsoup.connect(url).get();
 
+	    Element head = document.select("head").first();
+	    Element head2 = document.head();
 	    Element title = document.select("span.post_title").first();
 	    Element hubs = document.select("div.hubs").first();
 	    Element content = document.select("div.content").first();
 	    Element date = document.select("div.published").first();
 	    Element author = document.select("div.author > a").first();
+	    Element infopanel = document.select("div.infopanel").first();
 
 	    if (title != null) {
 		data.setUrl(url);
+		data.setDataHead(head2.html());
 		data.setTitle(title.text());
 		data.setHubs(hubs.text());
 		data.setContent(content.html());
 		data.setDate(date.text());
 		data.setAuthor(author.text());
+		data.setInfoPanel(infopanel.html());
 	    } else
 		data.setContent(context.getString(R.string.error_404));
 	} catch (IOException e) {

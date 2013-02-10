@@ -1,0 +1,12 @@
+<resources>
+
+    <!-- Icons -->
+    <attr name="icSearchIcon" format="reference" />
+    
+    <!-- Styles -->
+    <attr name="Users.Divider" format="reference" />
+    
+    <!-- Text colors -->
+    <attr name="textColorWB" format="reference" />
+
+</resources>

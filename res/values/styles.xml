@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="HabReader.Theme.Light" parent="Theme.Sherlock.Light">
-        <item name="actionBarTabTextStyle">@style/Widget.HabReader.ActionBar.TabText</item>
-        <item name="android:actionBarTabTextStyle">@style/Widget.HabReader.ActionBar.TabText</item>
-        <item name="actionBarTabBarStyle">@style/Widget.HabReader.ActionBar.TabBar</item>
-        <item name="android:actionBarTabBarStyle">@style/Widget.HabReader.ActionBar.TabBar</item>
-    </style>
-
     <style name="DataFields">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -24,7 +17,7 @@
         <item name="android:background">@drawable/text_info_background</item>
     </style>
 
-    <style name="HabReader.Theme.Light.Users.Divider" parent="android:Widget.Holo.Light.TextView">
+    <style name="Users.Divider" parent="android:Widget.Holo.Light.TextView">
         <item name="android:drawableBottom">@drawable/users_divider</item>
         <item name="android:drawablePadding">4dp</item>
         <item name="android:layout_marginTop">8dp</item>
@@ -42,6 +35,11 @@
     <style name="Widget.HabReader.ActionBar.TabText" parent="Widget.Sherlock.ActionBar.TabText">
         <item name="android:textSize">10sp</item>
         <item name="android:maxLines">1</item>
+    </style>
+    
+    <!-- Dark theme -->
+    <style name="Users.Divider.Dark">
+        <item name="android:textColor">@color/white</item>
     </style>
 
 </resources>

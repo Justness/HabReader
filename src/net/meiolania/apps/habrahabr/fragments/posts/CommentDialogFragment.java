@@ -65,7 +65,7 @@ public class CommentDialogFragment extends SherlockDialogFragment {
 	cBody.getSettings().setSupportZoom(false);
 	cBody.getSettings().setBuiltInZoomControls(false);
 	cBody.getSettings().setDefaultZoom(ZoomDensity.FAR);
-	cBody.setInitialScale(prefs.getViewScale(getSherlockActivity()));
+	cBody.setInitialScale(prefs.getViewScale());
 	cBody.loadDataWithBaseURL(null, STYLESHEET + comment, "text/html", "UTF-8", null);
 	return v;
     }

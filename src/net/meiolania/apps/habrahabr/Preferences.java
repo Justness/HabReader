@@ -142,7 +142,7 @@ public final class Preferences {
 	editor.commit();
     }
 
-    public int getViewScale(Context context) {
+    public int getViewScale() {
 	float userScale = sharedPreferences.getFloat(USER_SCALE, USER_SCALE_DEFAULT);
 	return (int) (100 * userScale);
     }

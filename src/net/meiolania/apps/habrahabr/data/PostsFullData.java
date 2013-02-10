@@ -17,7 +17,7 @@ limitations under the License.
 package net.meiolania.apps.habrahabr.data;
 
 public class PostsFullData extends PostsData {
-    protected String content;
+    protected String content, head, panel;
 
     public void setContent(String content) {
 	this.content = content;
@@ -25,6 +25,22 @@ public class PostsFullData extends PostsData {
 
     public String getContent() {
 	return content;
+    }
+    
+    public void setInfoPanel(String panel) {
+	this.panel = panel;
+    }
+
+    public String getInfoPanel() {
+	return panel;
+    }
+    
+    public void setDataHead(String head) {
+	this.head = head;
+    }
+
+    public String getDataHead() {
+	return head;
     }
 
 }

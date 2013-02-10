@@ -12,7 +12,7 @@
 
         <TextView
             android:id="@+id/event_location_divider"
-            style="@style/HabReader.Theme.Light.Users.Divider"
+            style="@style/Users.Divider"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/location_event" />
@@ -24,7 +24,7 @@
         
         <TextView
             android:id="@+id/event_date_divider"
-            style="@style/HabReader.Theme.Light.Users.Divider"
+            style="@style/Users.Divider"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/date_event" />
@@ -36,7 +36,7 @@
         
         <TextView
             android:id="@+id/event_pay_divider"
-            style="@style/HabReader.Theme.Light.Users.Divider"
+            style="@style/Users.Divider"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/pay" />
@@ -48,7 +48,7 @@
         
         <TextView
             android:id="@+id/event_description_divider"
-            style="@style/HabReader.Theme.Light.Users.Divider"
+            style="@style/Users.Divider"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/description" />

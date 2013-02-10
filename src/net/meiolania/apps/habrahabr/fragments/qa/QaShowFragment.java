@@ -108,7 +108,7 @@ public class QaShowFragment extends SherlockFragment implements LoaderCallbacks<
 	    content.getSettings().setSupportZoom(true);
 	    content.getSettings().setBuiltInZoomControls(true);
 	    content.getSettings().setJavaScriptEnabled(true);
-	    content.setInitialScale(Preferences.getInstance(getSherlockActivity()).getViewScale(getSherlockActivity()));
+	    content.setInitialScale(Preferences.getInstance(getSherlockActivity()).getViewScale());
 	    content.getSettings().setDefaultZoom(ZoomDensity.FAR);
 
 	    content.loadDataWithBaseURL("", STYLESHEET + data.getContent(), "text/html", "UTF-8", null);

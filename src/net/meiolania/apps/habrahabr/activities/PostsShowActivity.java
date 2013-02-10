@@ -21,10 +21,17 @@ import net.meiolania.apps.habrahabr.R;
 import net.meiolania.apps.habrahabr.fragments.posts.PostShowFragment;
 import net.meiolania.apps.habrahabr.fragments.posts.PostsCommentsFragment;
 import net.meiolania.apps.habrahabr.ui.TabListener;
+import net.meiolania.apps.habrahabr.ui.popup.TransparentPanel;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
@@ -39,19 +46,19 @@ public class PostsShowActivity extends AbstractionFragmentActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
-	
+
 	if (savedInstanceState != null)
 	    currentTab = savedInstanceState.getInt("currentTab");
 
 	loadExtras();
 	showActionBar();
     }
-    
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        
-        outState.putInt("currentTab", getSupportActionBar().getSelectedTab().getPosition());
+	super.onSaveInstanceState(outState);
+
+	outState.putInt("currentTab", getSupportActionBar().getSelectedTab().getPosition());
     }
 
     private void loadExtras() {
@@ -100,4 +107,21 @@ public class PostsShowActivity extends AbstractionFragmentActivity {
 	};
     }
 
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+	if (keyCode == KeyEvent.KEYCODE_MENU) {
+	    View popup = (View) findViewById(R.id.view1);
+	    Animation animShow = AnimationUtils.loadAnimation(this, R.anim.popup_show);
+	    Animation animHide = AnimationUtils.loadAnimation(this, R.anim.popup_hide);
+	    if (popup.getVisibility() != View.VISIBLE) {
+		popup.setVisibility(View.VISIBLE);
+		popup.startAnimation(animShow);
+	    } else {
+		popup.startAnimation(animHide);
+		popup.setVisibility(View.GONE);
+	    }
+	    return true;
+	} else {
+	    return super.onKeyUp(keyCode, event);
+	}
+    }
 }

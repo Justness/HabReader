@@ -18,7 +18,7 @@
         android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/HabReader.Theme.Light" >
+        android:theme="@style/HabReader.Theme.Dark" >
 
         <!-- The main entry point of application -->
         <activity android:name=".activities.MainActivity" >

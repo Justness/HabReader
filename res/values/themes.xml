@@ -1,0 +1,19 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="HabReader.Theme.Light" parent="Theme.Sherlock.Light">
+        <item name="actionBarTabTextStyle">@style/Widget.HabReader.ActionBar.TabText</item>
+        <item name="android:actionBarTabTextStyle">@style/Widget.HabReader.ActionBar.TabText</item>
+        <item name="actionBarTabBarStyle">@style/Widget.HabReader.ActionBar.TabBar</item>
+        <item name="android:actionBarTabBarStyle">@style/Widget.HabReader.ActionBar.TabBar</item>
+        <item name="icSearchIcon">@drawable/ic_search</item>
+        <item name="textColorWB">@color/black</item>
+        <item name="Users.Divider">@style/Users.Divider</item>
+    </style>
+    
+    <style name="HabReader.Theme.Dark" parent="Theme.Sherlock">
+        <item name="icSearchIcon">@drawable/ic_search_dark</item>
+        <item name="textColorWB">@color/white</item>
+        <item name="Users.Divider">@style/Users.Divider.Dark</item>
+    </style>
+
+</resources>
